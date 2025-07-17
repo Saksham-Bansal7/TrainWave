@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 import { connectDB } from './config/db.js';
 import userRouter from './routes/userRoutes.js';
+import exerciseRouter from './routes/exerciseRoutes.js';
 
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 //routes
 
 app.use('/api/users', userRouter);
+app.use('/api/exercises', exerciseRouter);
 app.get('/', (req, res) => {  
   res.send('Welcome to the TrainWave Backend!');
 });

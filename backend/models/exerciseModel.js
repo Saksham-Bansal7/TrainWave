@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const exerciseSchema = new mongoose.Schema(
   {
     exercise: {
@@ -19,10 +20,14 @@ const exerciseSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    // Optionally, you can add a user reference or date field here
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-const Exercise = mongoose.model("Exercise", exerciseSchema);  
+const Exercise = mongoose.model("Exercise", exerciseSchema);
 export default Exercise;
