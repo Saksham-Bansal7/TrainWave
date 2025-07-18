@@ -4,7 +4,7 @@ import {
   createExercise,
   getUserExercises,
   deleteExercise,
-  getLeaderboard,
+  getLeaderboard, 
 } from '../controllers/exerciseController.js';
 
 const exerciseRouter = express.Router();
