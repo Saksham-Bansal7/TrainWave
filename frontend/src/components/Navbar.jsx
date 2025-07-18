@@ -1,12 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleLoginModal, toggleSignupModal } from "../store/store";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState(null);
-  const [activeNavTab, setActiveNavTab] = useState("dashboard");
+  const [activeNavTab, setActiveNavTab] = useState("home");
+  // Sync active tab with route
+  useEffect(() => {
+    if (location.pathname === "/dashboard") {
+      setActiveNavTab("dashboard");
+    } else if (location.pathname === "/leaderboard") {
+      setActiveNavTab("leaderboard");
+    } else if (location.pathname === "/home" || location.pathname === "/") {
+      setActiveNavTab("home");
+    } else if (location.pathname === "/progress") {
+      setActiveNavTab("progress");
+    }
+  }, [location.pathname]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   // Check login status
@@ -33,13 +48,109 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { id: "dashboard", label: "Dashboard", icon: "📊" },
-    { id: "progress", label: "Progress", icon: "�" },
-    { id: "leaderboard", label: "Leaderboard", icon: "🏆" },
+    {
+      id: "home",
+      label: "Home",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className="lucide lucide-house-icon lucide-house"
+        >
+          <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />
+          <path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        </svg>
+      ),
+    },
+    {
+      id: "dashboard",
+      label: "Dashboard",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-layout-dashboard-icon lucide-layout-dashboard"
+        >
+          <rect width="7" height="9" x="3" y="3" rx="1" />
+          <rect width="7" height="5" x="14" y="3" rx="1" />
+          <rect width="7" height="9" x="14" y="12" rx="1" />
+          <rect width="7" height="5" x="3" y="16" rx="1" />
+        </svg>
+      ),
+    },
+    {
+      id: "progress",
+      label: "Progress",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-notebook-tabs-icon lucide-notebook-tabs"
+        >
+          <path d="M2 6h4" />
+          <path d="M2 10h4" />
+          <path d="M2 14h4" />
+          <path d="M2 18h4" />
+          <rect width="16" height="20" x="4" y="2" rx="2" />
+          <path d="M15 2v20" />
+          <path d="M15 7h5" />
+          <path d="M15 12h5" />
+          <path d="M15 17h5" />
+        </svg>
+      ),
+    },
+    {
+      id: "leaderboard",
+      label: "Leaderboard",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-medal-icon lucide-medal"
+        >
+          <path d="M7.21 15 2.66 7.14a2 2 0 0 1 .13-2.2L4.4 2.8A2 2 0 0 1 6 2h12a2 2 0 0 1 1.6.8l1.6 2.14a2 2 0 0 1 .14 2.2L16.79 15" />
+          <path d="M11 12 5.12 2.2" />
+          <path d="m13 12 5.88-9.8" />
+          <path d="M8 7h8" />
+          <circle cx="12" cy="17" r="5" />
+          <path d="M12 18v-2h-.5" />
+        </svg>
+      ),
+    },
   ];
 
   const handleNavClick = (tabId) => {
     setActiveNavTab(tabId);
+    navigate(`/${tabId}`);
+
     // Close mobile menu when item is clicked
     if (sidebarOpen) {
       setSidebarOpen(false);
@@ -51,7 +162,7 @@ const Navbar = () => {
     localStorage.removeItem("user");
     setIsLoggedIn(false);
     setUser(null);
-    setActiveNavTab("dashboard");
+    setActiveNavTab("home");
     window.location.reload();
   };
 

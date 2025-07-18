@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleLoginModal } from "../store/store";
-import Navbar from "../components/Navbar";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
 
@@ -27,8 +26,6 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-      {/* Navbar */}
-      <Navbar />
 
       {/* Auth Modals */}
       <Login />
