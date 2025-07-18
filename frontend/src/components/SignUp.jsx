@@ -241,13 +241,6 @@ const SignUp = () => {
             </button>
           </p>
         </div>
-
-        {/* Terms */}
-        <div className="mt-3 sm:mt-4 text-center">
-          <p className="text-white/50 text-xs">
-            By signing up, you agree to our Terms of Service and Privacy Policy
-          </p>
-        </div>
       </div>
     </div>
   );
