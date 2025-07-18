@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const Leaderboard = () => {
   const [data, setData] = useState([]);
@@ -93,7 +94,7 @@ const Leaderboard = () => {
               onClick={() => setPage((p) => Math.max(1, p - 1))}
               disabled={page === 1}
             >
-              Previous
+              <ChevronLeft />
             </button>
             <span className="text-white/80">
               Page {page} of {totalPages}
@@ -103,7 +104,7 @@ const Leaderboard = () => {
               onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
               disabled={page === totalPages}
             >
-              Next
+              <ChevronRight />
             </button>
           </div>
         )}

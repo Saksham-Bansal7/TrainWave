@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./components/Leaderboard";
 import ExerciseHistory from "./components/ExerciseHistory";
+import PoseTracker from "./components/PoseTracker";
 
 const App = () => {
   return (

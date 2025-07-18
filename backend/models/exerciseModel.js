@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 
-
 const exerciseSchema = new mongoose.Schema(
   {
     exercise: {
