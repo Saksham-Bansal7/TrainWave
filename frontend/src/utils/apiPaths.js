@@ -2,9 +2,9 @@ export const BASE_URL = "http://localhost:5000/";
 
 export const API_PATHS = {
   AUTH: {
-    REGISTER: "/api/auth/register",
-    LOGIN: "/api/auth/login",
-    GET_PROFILE: "/api/auth/profile",
+    REGISTER: "/api/users/register",
+    LOGIN: "/api/users/login",
+    GET_PROFILE: "/api/users/profile",
   },
   
   EXERCISE: {
