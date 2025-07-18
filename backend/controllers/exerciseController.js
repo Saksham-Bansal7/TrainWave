@@ -39,4 +39,21 @@ const deleteExercise = async (req, res) => {
     }
 };
 
-export { createExercise, getUserExercises, deleteExercise };
+const getLeaderboard = async (req, res) => {
+    try {
+        const exercises = await Exercise.find();
+        const leaderboard = exercises
+            .sort((a, b) => b.reps - a.reps)
+            .map(exercise => ({
+                exercise: exercise.exercise,
+                reps: exercise.reps,
+                user: exercise.user,
+            }))
+            .slice(0, 10);
+        res.status(200).json(leaderboard);
+    } catch (error) {
+        res.status(500).json({ message: "Failed to retrieve leaderboard", error: error.message });
+    }
+};
+
+export { createExercise, getUserExercises, deleteExercise, getLeaderboard };
