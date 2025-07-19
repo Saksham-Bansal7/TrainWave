@@ -4,6 +4,7 @@ import 'dotenv/config';
 import { connectDB } from './config/db.js';
 import userRouter from './routes/userRoutes.js';
 import exerciseRouter from './routes/exerciseRoutes.js';
+import trainerChatRouter from './routes/trainerChatRoutes.js'; // Assuming this is the correct path for trainer chat routes
 
 
 const app = express();
@@ -21,6 +22,9 @@ app.use(express.json());
 
 app.use('/api/users', userRouter);
 app.use('/api/exercises', exerciseRouter);
+app.use('/api/trainer-chat', trainerChatRouter); // Trainer chat routes
+
+// Test route
 app.get('/', (req, res) => {  
   res.send('Welcome to the TrainWave Backend!');
 });

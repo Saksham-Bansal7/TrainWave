@@ -7,7 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Navbar from "./components/Navbar";
 import Leaderboard from "./components/Leaderboard";
 import ExerciseHistory from "./components/ExerciseHistory";
-import PoseTracker from "./components/PoseTracker";
+import TrainerChat from "./components/TrainerChat";
 
 const App = () => {
   return (
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/leaderboard" element={<Leaderboard />} />
           <Route path="/progress" element={<ExerciseHistory />} />
+          <Route path="/chat" element={<TrainerChat />} />
         </Routes>
       </Router>
     </Provider>

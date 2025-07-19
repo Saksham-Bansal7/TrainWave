@@ -20,6 +20,8 @@ const Navbar = () => {
       setActiveNavTab("home");
     } else if (location.pathname === "/progress") {
       setActiveNavTab("progress");
+    } else if (location.pathname === "/chat") {
+      setActiveNavTab("chat");
     }
   }, [location.pathname]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -142,6 +144,30 @@ const Navbar = () => {
           <path d="M8 7h8" />
           <circle cx="12" cy="17" r="5" />
           <path d="M12 18v-2h-.5" />
+        </svg>
+      ),
+    },
+    {
+      id: "chat",
+      label: "Ai Trainer",
+      icon: (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-contact-round-icon lucide-contact-round"
+        >
+          <path d="M16 2v2" />
+          <path d="M17.915 22a6 6 0 0 0-12 0" />
+          <path d="M8 2v2" />
+          <circle cx="12" cy="12" r="4" />
+          <rect x="3" y="4" width="18" height="18" rx="2" />
         </svg>
       ),
     },

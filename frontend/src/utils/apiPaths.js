@@ -13,5 +13,12 @@ export const API_PATHS = {
     LEADERBOARD: "/api/exercises/leaderboard",
     DELETE: (id) => `/api/exercises/${id}`,
   },
+
+  CHAT: {
+    GET_MESSAGE: "/api/trainer-chat/",
+    SEND_MESSAGE: "/api/trainer-chat/message",
+    NEW_CHAT: "/api/trainer-chat/new-chat",
+    DELETE_MESSAGE: (id) => `/api/trainer-chat/${id}`,
+  },
 };
  
