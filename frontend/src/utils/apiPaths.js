@@ -1,5 +1,5 @@
-import 'dotenv/config';
-export const BASE_URL = "https://train-wave-sd9z.vercel.app";
+
+export const BASE_URL = "https://train-wave-sd9z.vercel.app"; // Change to your backend URL if needed
 
 export const API_PATHS = {
   AUTH: {
