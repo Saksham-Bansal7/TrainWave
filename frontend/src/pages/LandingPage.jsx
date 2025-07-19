@@ -238,7 +238,7 @@ const LandingPage = () => {
           </div>
           <p className="text-white/70 text-sm sm:text-base">
             crafted with ❤️ by the <a href="https://github.com/Saksham-Bansal7/TrainWave" target="_blank">Saksham</a>
-          </p>
+          </p> 
         </div>
       </footer>
     </div>
