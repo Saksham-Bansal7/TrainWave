@@ -1,4 +1,5 @@
-export const BASE_URL = "http://localhost:5000/";
+import 'dotenv/config';
+export const BASE_URL = meta.env.VITE_BACKEND_LINK;
 
 export const API_PATHS = {
   AUTH: {

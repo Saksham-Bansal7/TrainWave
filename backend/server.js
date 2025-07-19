@@ -26,7 +26,7 @@ app.use('/api/trainer-chat', trainerChatRouter); // Trainer chat routes
 
 // Test route
 app.get('/', (req, res) => {  
-  res.send('Welcome to the TrainWave Backend!');
+  res.redirect(process.env.FRONTEND_URL);
 });
 
 
