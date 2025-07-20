@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { toggleLoginModal } from "../store/store";
 import Login from "../components/Login";
 import SignUp from "../components/SignUp";
+import trainWaveLogo from "../assets/TrainWave.jpg";
 
 const LandingPage = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,6 @@ const LandingPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900">
-
       {/* Auth Modals */}
       <Login />
       <SignUp />
@@ -42,12 +42,15 @@ const LandingPage = () => {
                 Reps
               </span>
             </h1>
+
             <p className="text-lg sm:text-xl md:text-2xl text-white/80 mb-8 sm:mb-12 max-w-3xl mx-auto px-4">
               AI-powered exercise tracking that counts your reps in real-time.
+              <br />
+              Get instant feedback and personalized advice from your built-in AI
+              fitness trainer.
+              <br />
               Transform your workouts with intelligent motion detection.
             </p>
-
-            
 
             <button
               onClick={handleStartTracking}
@@ -130,6 +133,31 @@ const LandingPage = () => {
               </p>
             </div>
 
+            {/* AI Trainer */}
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300">
+              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-green-400 to-cyan-500 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <svg
+                  className="w-6 h-6 sm:w-8 sm:h-8 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="12" cy="12" r="10" strokeWidth="2" />
+                  <path d="M8 15s1.5 2 4 2 4-2 4-2" strokeWidth="2" />
+                  <circle cx="9" cy="10" r="1" fill="white" />
+                  <circle cx="15" cy="10" r="1" fill="white" />
+                </svg>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">
+                AI Trainer
+              </h3>
+              <p className="text-white/70 text-sm sm:text-base">
+                Get instant feedback and personalized advice from your built-in
+                AI fitness trainer. Chat for tips, motivation, and workout
+                guidance anytime.
+              </p>
+            </div>
+
             {/* Multiple Exercises */}
             <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
@@ -156,8 +184,8 @@ const LandingPage = () => {
               </p>
             </div>
 
-            {/* Progress Analytics */}
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300">
+            {/* Progress Analytics (centered if last in row) */}
+            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-xl sm:rounded-2xl p-6 sm:p-8 text-center hover:bg-white/10 transition-all duration-300 md:col-span-1 md:col-start-2 justify-self-center">
               <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-pink-500 to-red-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6">
                 <svg
                   className="w-6 h-6 sm:w-8 sm:h-8 text-white"
@@ -197,8 +225,8 @@ const LandingPage = () => {
               Your Fitness?
             </h2>
             <p className="text-lg sm:text-xl text-white/80 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-              Join thousands of users who are already tracking their workouts
-              with AI precision
+              Join the other users who are already tracking their workouts with
+              AI precision
             </p>
             <button
               onClick={handleStartTracking}
@@ -227,18 +255,21 @@ const LandingPage = () => {
       <footer className="relative px-4 sm:px-6 py-8 sm:py-12 border-t border-white/10">
         <div className="max-w-7xl mx-auto text-center">
           <div className="flex items-center justify-center space-x-2 mb-3 sm:mb-4">
-            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md sm:rounded-lg flex items-center justify-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r from-blue-500 to-purple-600 rounded-md sm:rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm sm:text-base">
-                TW
+                <img src={trainWaveLogo} alt="TW" />
               </span>
             </div>
-            <span className="text-white text-lg sm:text-xl font-bold">
-              TrainWave
-            </span>
           </div>
           <p className="text-white/70 text-sm sm:text-base">
-            crafted with ❤️ by the <a href="https://github.com/Saksham-Bansal7/TrainWave" target="_blank">Saksham</a>
-          </p> 
+            crafted with ❤️ by the{" "}
+            <a
+              href="https://github.com/Saksham-Bansal7/TrainWave"
+              target="_blank"
+            >
+              Saksham
+            </a>
+          </p>
         </div>
       </footer>
     </div>

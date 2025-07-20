@@ -1,47 +1,51 @@
 import React from "react";
+import { FaDumbbell } from "react-icons/fa"; // For deadlift / general fitness
+import { GiBiceps, GiShoulderArmor, GiWeightLiftingDown, GiWeightLiftingUp } from "react-icons/gi"; // For strength icons
+import { GiMuscularTorso } from "react-icons/gi";
+import { GiLeg } from "react-icons/gi";
 
 const ExerciseCard = ({ selectedExercise, onExerciseChange, disabled }) => {
   const exercises = [
     {
       id: "pushup",
       name: "Push-ups",
-      icon: "💪",
+      icon: <GiMuscularTorso />,
       description: "Chest & triceps",
     },
     {
       id: "pullup",
       name: "Pull-ups",
-      icon: "🏋️",
+      icon: <GiWeightLiftingUp />,
       description: "Back & biceps",
     },
     {
       id: "bicep_curls",
       name: "Bicep Curls",
-      icon: "💪",
+      icon: <GiBiceps />,
       description: "Bicep strength",
     },
     {
       id: "shoulder_raises",
       name: "Shoulder Raises",
-      icon: "🤸",
+      icon: <GiShoulderArmor />,
       description: "Shoulder strength",
     },
     {
       id: "press",
       name: "Press",
-      icon: "🏋️‍♀️",
+      icon: <GiWeightLiftingUp />,
       description: "Overhead press",
     },
     {
       id: "squats",
       name: "Squats",
-      icon: "🦵",
+      icon: <GiLeg />,
       description: "Leg strength",
     },
     {
       id: "deadlift",
       name: "Deadlift",
-      icon: "⚡",
+      icon: <FaDumbbell />,
       description: "Full body",
     },
   ];
