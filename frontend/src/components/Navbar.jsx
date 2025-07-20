@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggleLoginModal, toggleSignupModal } from "../store/store";
 import { useNavigate, useLocation } from "react-router-dom";
+import trainWaveLogo from "../assets/TrainWave.jpg";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -198,11 +199,11 @@ const Navbar = () => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex items-center space-x-2 sm:space-x-3">
-            <div className="w-8 h-8 sm:w-12 sm:h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-12 h-12 sm:w-16 sm:h-16bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-white font-bold text-sm sm:text-xl">
-                TW
+                <img src={trainWaveLogo} alt="TW" /> 
               </span>
-            </div>
+            </div>  
             <div>
               <h1 className="text-white text-lg sm:text-2xl font-bold">
                 TrainWave
