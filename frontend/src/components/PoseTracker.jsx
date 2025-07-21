@@ -22,11 +22,6 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
     position = "START";
     setCurrPosition("START");
     exercise_active = false;
-    
-    // Force a small delay to ensure state is properly reset
-    setTimeout(() => {
-      exercise_active = false;
-    }, 100);
   }, [exerciseType, isTracking]);
 
   useEffect(() => {
@@ -107,11 +102,6 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
   };
 
   const trackExercise = (points) => {
-    // Additional safety check - ensure exercise_active is properly reset
-    if (position === "START") {
-      exercise_active = false;
-    }
-    
     switch (exerciseType) {
       case "pushup":
         trackPushup(points);
@@ -162,42 +152,42 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
 
   const trackPullup = (p) => {
     if (!exercise_active && p[12].y - 50 < p[16].y && p[11].y - 50 < p[15].y) {
-      update("UP", false);
+      update("UP", true);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[12].y - 200 > p[16].y &&
       p[11].y - 200 > p[15].y
     ) {
-      update("DOWN", true);
+      update("DOWN", false);
       exercise_active = false;
     }
   };
 
   const trackCurls = (p) => {
     if (!exercise_active && p[14].y - 50 > p[16].y && p[13].y - 50 > p[15].y) {
-      update("UP", false);
+      update("UP", true);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[14].y + 70 < p[16].y &&
       p[15].y + 70 > p[13].y
     ) {
-      update("DOWN", true);
+      update("DOWN", false);
       exercise_active = false;
     }
   };
 
   const trackShoulderRaises = (p) => {
     if (!exercise_active && p[14].y + 30 < p[12].y && p[13].y + 30 < p[11].y) {
-      update("UP", false);
+      update("UP", true);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[14].y - 30 > p[12].y &&
       p[13].y - 30 > p[11].y
     ) {
-      update("DOWN", true);
+      update("DOWN", false);
       exercise_active = false;
     }
   };
@@ -291,7 +281,7 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
           <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
             <div className="text-white text-center">
               <div className="text-6xl mb-4">📷</div>
-              <p className="text-lg">Press "Start Tracking" to begin</p>
+              <p className="text-lg">Press "Start Tracking" to begin counting</p>
               <p className="text-white/60 text-sm mt-2">
                 Camera will activate when you start
               </p>

@@ -3,8 +3,10 @@ import PoseTracker from "../components/PoseTracker";
 import ExerciseCard from "../components/ExerciseCard";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [selectedExercise, setSelectedExercise] = useState("bicep_curls");
   const [isTracking, setIsTracking] = useState(false);
   const [sessionReps, setSessionReps] = useState(0);
@@ -58,6 +60,8 @@ const Dashboard = () => {
         alert("Failed to save session");
       }
     }
+
+    navigate("/progress"); // Redirect to progress page after saving
   };
 
   const handleExerciseChange = (exercise) => {
