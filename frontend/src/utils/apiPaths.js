@@ -1,5 +1,5 @@
 
-export const BASE_URL = "http://localhost:5000"; // Change to your backend URL if needed
+export const BASE_URL = "https://train-wave-sd9z.vercel.app"; // Change to your backend URL if needed
 
 export const API_PATHS = {
   AUTH: {

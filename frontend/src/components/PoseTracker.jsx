@@ -22,6 +22,11 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
     position = "START";
     setCurrPosition("START");
     exercise_active = false;
+    
+    // Force a small delay to ensure state is properly reset
+    setTimeout(() => {
+      exercise_active = false;
+    }, 100);
   }, [exerciseType, isTracking]);
 
   useEffect(() => {
@@ -102,6 +107,11 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
   };
 
   const trackExercise = (points) => {
+    // Additional safety check - ensure exercise_active is properly reset
+    if (position === "START") {
+      exercise_active = false;
+    }
+    
     switch (exerciseType) {
       case "pushup":
         trackPushup(points);
@@ -152,42 +162,42 @@ const PoseTracker = ({ exerciseType, isTracking, onRepUpdate }) => {
 
   const trackPullup = (p) => {
     if (!exercise_active && p[12].y - 50 < p[16].y && p[11].y - 50 < p[15].y) {
-      update("UP", true);
+      update("UP", false);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[12].y - 200 > p[16].y &&
       p[11].y - 200 > p[15].y
     ) {
-      update("DOWN", false);
+      update("DOWN", true);
       exercise_active = false;
     }
   };
 
   const trackCurls = (p) => {
     if (!exercise_active && p[14].y - 50 > p[16].y && p[13].y - 50 > p[15].y) {
-      update("UP", true);
+      update("UP", false);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[14].y + 70 < p[16].y &&
       p[15].y + 70 > p[13].y
     ) {
-      update("DOWN", false);
+      update("DOWN", true);
       exercise_active = false;
     }
   };
 
   const trackShoulderRaises = (p) => {
     if (!exercise_active && p[14].y + 30 < p[12].y && p[13].y + 30 < p[11].y) {
-      update("UP", true);
+      update("UP", false);
       exercise_active = true;
     } else if (
       exercise_active &&
       p[14].y - 30 > p[12].y &&
       p[13].y - 30 > p[11].y
     ) {
-      update("DOWN", false);
+      update("DOWN", true);
       exercise_active = false;
     }
   };
